@@ -6,7 +6,6 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import android.widget.TextView
-import android.widget.Toast
 import com.example.calculator.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -61,32 +60,18 @@ class MainActivity : AppCompatActivity() {
                 if (data != null) {
                     val num1 = data.getStringExtra("num1")
                     val num2 = data.getStringExtra("num2")
-                    val actionResult = operation(num1?.toDoubleOrNull(), num2?.toDoubleOrNull(),action)
+                    val actionResult = data.getStringExtra("result")
                     textView.text = "Action :  $action\nInput1 :  $num1\nInput2 :  $num2\nResult :  $actionResult"
                 }
             }
         }
     }
-    fun onReset(){
+    private fun onReset(){
         textView.visibility = View.INVISIBLE
         buttonReset.visibility = View.INVISIBLE
         buttonAdd.visibility=View.VISIBLE
         buttonSub.visibility=View.VISIBLE
         buttonMultiply.visibility=View.VISIBLE
         buttonDivide.visibility=View.VISIBLE
-    }
-    private fun operation(num1: Double?, num2: Double?, action: String?):Double?{
-        if(num1!=null && num2!=null && action!=null){
-            return when(action){
-                "ADDITION" -> num1+num2
-                "SUB" -> num1-num2
-                "MULTIPLY" -> num1*num2
-                else -> num1/num2
-            }
-        }
-        else{
-            Toast.makeText(this, "enter valid number and try again", Toast.LENGTH_LONG).show()
-            return null
-        }
     }
 }
