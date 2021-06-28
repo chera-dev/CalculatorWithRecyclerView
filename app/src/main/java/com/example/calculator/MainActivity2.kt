@@ -25,6 +25,7 @@ class MainActivity2 : AppCompatActivity() {
         num2 =binding.editTextNumber2
         button.text  = action
         button.setOnClickListener {
+            //finish()
             actionResult = operation(num1.text.toString().toDoubleOrNull(),num2.text.toString().toDoubleOrNull(),action)
             actionResult?.let { toMainActivity(action, it) }
         }
@@ -36,6 +37,7 @@ class MainActivity2 : AppCompatActivity() {
         intent.putExtra("result",actionResult)
         intent.putExtra("action",action )
         startActivity(intent)
+        finish()
     }
     private fun operation(num1: Double?, num2: Double?, action: String?):Double?{
         if(num1!=null && num2!=null && action!=null){

@@ -60,12 +60,14 @@ class MainActivity : AppCompatActivity() {
         num1TextView.text = "Action :  $action\nInput1 :  $num1\nInput2 :  $num2\nResult :  $result"
 
         buttonReset.setOnClickListener {
-            num1TextView.visibility = View.INVISIBLE
+            finish()
+            //destroying the activity instead of making views visible and invisible
+            /*num1TextView.visibility = View.INVISIBLE
             buttonReset.visibility = View.INVISIBLE
             buttonAdd.visibility=View.VISIBLE
             buttonSub.visibility=View.VISIBLE
             buttonMultiply.visibility=View.VISIBLE
-            buttonDivide.visibility=View.VISIBLE
+            buttonDivide.visibility=View.VISIBLE*/
         }
     }
 }
