@@ -45,10 +45,10 @@
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/buttonAdd"
-        app:layout_constraintVertical_bias="0.135" />
+        app:layout_constraintVertical_bias="0.112" />
 
     <Button
         android:id="@+id/buttonMultiply"
@@ -62,7 +62,7 @@
         app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/buttonSub"
-        app:layout_constraintVertical_bias="0.254" />
+        app:layout_constraintVertical_bias="0.18" />
 
     <Button
         android:id="@+id/buttonDivide"
@@ -76,7 +76,7 @@
         app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/buttonMultiply"
-        app:layout_constraintVertical_bias="0.603" />
+        app:layout_constraintVertical_bias="0.301" />
 
     <Button
         android:id="@+id/buttonReset"
