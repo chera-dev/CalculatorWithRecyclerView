@@ -8,12 +8,9 @@ import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.TextView
-import com.example.calculator.databinding.ActivityMainBinding
-import timber.log.Timber
 
 
 class MainActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityMainBinding
     private lateinit var buttonAdd: Button
     private lateinit var buttonSub: Button
     private lateinit var buttonMultiply: Button
@@ -27,14 +24,13 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         Log.i("MainActivity","oncreate called")
         super.onCreate(savedInstanceState)
-        binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding.root)
-        buttonAdd = binding.buttonAdd
-        buttonSub = binding.buttonSub
-        buttonMultiply = binding.buttonMultiply
-        buttonDivide = binding.buttonDivide
-        textView = binding.textViewresult
-        buttonReset = binding.buttonReset
+        setContentView(R.layout.activity_main)
+        buttonAdd = findViewById(R.id.buttonAdd)
+        buttonSub = findViewById(R.id.buttonSub)
+        buttonMultiply = findViewById(R.id.buttonMultiply)
+        buttonDivide = findViewById(R.id.buttonDivide)
+        textView = findViewById(R.id.textViewresult)
+        buttonReset = findViewById(R.id.buttonReset)
         buttonReset.setOnClickListener {
             state = 0
             onReset() }
@@ -45,12 +41,14 @@ class MainActivity : AppCompatActivity() {
         super.onSaveInstanceState(savedInstanceState)
         savedInstanceState.putInt("state",state)
         savedInstanceState.putString("result", textView.text.toString())
+        savedInstanceState.putString("action",action)
     }
 
     override fun onRestoreInstanceState(savedInstanceState: Bundle) {
         super.onRestoreInstanceState(savedInstanceState)
         Log.i("MainActivity","onRestoreInstanceState called")
         textView.text = savedInstanceState.getString("result")
+        action = savedInstanceState.getString("action").toString()
         state = savedInstanceState.getInt("state")
         if ( state == 1)
             onResult()

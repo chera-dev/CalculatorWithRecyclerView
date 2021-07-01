@@ -6,23 +6,20 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
-import com.example.calculator.databinding.ActivityMain2Binding
 
 
 class MainActivity2 : AppCompatActivity() {
-    private lateinit var binding: ActivityMain2Binding
     private lateinit var num1: EditText
     private lateinit var num2: EditText
     private lateinit var action: String
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityMain2Binding.inflate(layoutInflater)
-        setContentView(binding.root)
+        setContentView(R.layout.activity_main2)
         val intent = getIntent()
         action = intent.getStringExtra("Action").toString()
-        val button: Button = binding.buttonResult
-        num1 = binding.editTextNumber
-        num2 = binding.editTextNumber2
+        val button: Button =  findViewById(R.id.buttonResult)
+        num1 = findViewById(R.id.editTextNumber)
+        num2 = findViewById(R.id.editTextNumber2)
         button.text = action
         button.setOnClickListener {
             val actionResult = operation(num1.text.toString().toDoubleOrNull(), num2.text.toString().toDoubleOrNull())

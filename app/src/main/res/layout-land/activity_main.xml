@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:layout_height="wrap_content"
+    android:layout_width="wrap_content"
+    android:layout_gravity="center">
+<RelativeLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -16,12 +21,22 @@
         android:textSize="24sp"
         android:textStyle="bold"
         android:visibility="invisible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.344" />
+        tools:layout_editor_absoluteX="364dp"
+        tools:layout_editor_absoluteY="130dp"
+        android:layout_above="@id/buttonReset"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="30dp"/>
+
+    <Button
+        android:id="@+id/buttonReset"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/buttonMultiply"
+        android:layout_centerHorizontal="true"
+        android:text="@string/reset"
+        android:visibility="invisible"
+        tools:layout_editor_absoluteX="322dp"
+        tools:layout_editor_absoluteY="212dp" />
 
     <Button
         android:id="@+id/buttonAdd"
@@ -30,10 +45,8 @@
         android:onClick="onButtonClick"
         android:text="@string/add"
         android:textSize="16sp"
-        app:layout_constraintBaseline_toBaselineOf="@+id/buttonSub"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.33"
-        app:layout_constraintStart_toStartOf="parent" />
+        tools:layout_editor_absoluteX="202dp"
+        tools:layout_editor_absoluteY="112dp"/>
 
     <Button
         android:id="@+id/buttonSub"
@@ -42,12 +55,9 @@
         android:onClick="onButtonClick"
         android:text="@string/sub"
         android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.186"
-        app:layout_constraintStart_toEndOf="@+id/buttonAdd"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.36" />
+        tools:layout_editor_absoluteX="376dp"
+        tools:layout_editor_absoluteY="112dp"
+        android:layout_marginStart="200dp"/>
 
     <Button
         android:id="@+id/buttonMultiply"
@@ -56,10 +66,10 @@
         android:onClick="onButtonClick"
         android:text="@string/multiply"
         android:textSize="16sp"
-        app:layout_constraintBaseline_toBaselineOf="@+id/buttonDivide"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.33"
-        app:layout_constraintStart_toStartOf="parent" />
+        tools:layout_editor_absoluteX="202dp"
+        tools:layout_editor_absoluteY="240dp"
+        android:layout_below="@id/buttonAdd"
+        android:layout_marginTop="20dp"/>
 
     <Button
         android:id="@+id/buttonDivide"
@@ -68,23 +78,11 @@
         android:onClick="onButtonClick"
         android:text="@string/divide"
         android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.186"
-        app:layout_constraintStart_toEndOf="@+id/buttonMultiply"
-        app:layout_constraintTop_toBottomOf="@+id/buttonSub"
-        app:layout_constraintVertical_bias="0.283" />
+        tools:layout_editor_absoluteX="376dp"
+        tools:layout_editor_absoluteY="240dp"
+        android:layout_below="@id/buttonAdd"
+        android:layout_marginStart="200dp"
+        android:layout_marginTop="20dp"/>
 
-    <Button
-        android:id="@+id/buttonReset"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/reset"
-        android:visibility="invisible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewresult"
-        app:layout_constraintVertical_bias="0.245" />
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>
+</FrameLayout>
