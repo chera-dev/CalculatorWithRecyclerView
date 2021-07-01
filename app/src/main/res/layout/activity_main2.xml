@@ -3,42 +3,40 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_height="450dp"
+    android:layout_height="wrap_content"
     android:layout_width="wrap_content"
     android:layout_gravity="center">
-<RelativeLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".MainActivity2">
 
-    <EditText
-        android:id="@+id/editTextNumber"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="@string/enter_number_1"
-        android:inputType="numberDecimal"
-        android:layout_centerHorizontal="true"
-        android:layout_above="@id/editTextNumber2"
-        android:layout_marginBottom="40dp"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".MainActivity2">
 
-    <EditText
-        android:id="@+id/editTextNumber2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="@string/enter_number_2"
-        android:inputType="numberDecimal"
-        android:layout_centerInParent="true"/>
+        <EditText
+            android:id="@+id/editTextNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="40dp"
+            android:ems="10"
+            android:hint="@string/enter_number_1"
+            android:inputType="numberDecimal" />
 
-    <Button
-        android:id="@+id/buttonResult"
-        android:layout_width="120dp"
-        android:layout_height="100dp"
-        android:text="@string/button"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@id/editTextNumber2"
-        android:layout_marginTop="50dp"/>
+        <EditText
+            android:id="@+id/editTextNumber2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="@string/enter_number_2"
+            android:inputType="numberDecimal" />
 
-</RelativeLayout>
+        <Button
+            android:id="@+id/buttonResult"
+            android:layout_width="120dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="50dp"
+            android:text="@string/button"
+            android:layout_marginStart="47dp"/>
+
+    </LinearLayout>
 </FrameLayout>

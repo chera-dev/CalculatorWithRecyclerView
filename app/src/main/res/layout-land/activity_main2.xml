@@ -6,35 +6,42 @@
     android:layout_height="wrap_content"
     android:layout_width="wrap_content"
     android:layout_gravity="center">
-<RelativeLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".MainActivity2">
 
-    <EditText
-        android:id="@+id/editTextNumber"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="@string/enter_number_1"
-        android:inputType="numberDecimal"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".MainActivity2">
 
-    <EditText
-        android:id="@+id/editTextNumber2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="300dp"
-        android:ems="10"
-        android:hint="@string/enter_number_2"
-        android:inputType="numberDecimal"/>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
 
-    <Button
-        android:id="@+id/buttonResult"
-        android:layout_width="120dp"
-        android:layout_height="100dp"
-        android:text="@string/button"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="80dp"/>
+            <EditText
+                android:id="@+id/editTextNumber"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="@string/enter_number_1"
+                android:inputType="numberDecimal" />
 
-</RelativeLayout>
+            <EditText
+                android:id="@+id/editTextNumber2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:ems="10"
+                android:hint="@string/enter_number_2"
+                android:inputType="numberDecimal" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/buttonResult"
+            android:layout_width="120dp"
+            android:layout_height="100dp"
+            android:text="@string/button"
+            android:layout_marginStart="170dp"
+            android:layout_marginTop="15dp"/>
+
+    </LinearLayout>
 </FrameLayout>

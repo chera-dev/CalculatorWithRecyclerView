@@ -32,6 +32,7 @@ class MainActivity2 : AppCompatActivity() {
         intent.putExtra("num1",num1.text.toString())
         intent.putExtra("num2",num2.text.toString())
         intent.putExtra("result",actionResult.toString())
+        intent.putExtra("action",action)
         setResult(RESULT_OK,intent)
         finish()
     }

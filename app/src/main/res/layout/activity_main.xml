@@ -6,38 +6,11 @@
     android:layout_height="wrap_content"
     android:layout_width="wrap_content"
     android:layout_gravity="center">
-<RelativeLayout
+<LinearLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".MainActivity">
-
-    <TextView
-        android:id="@+id/textViewresult"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:lineSpacingExtra="8sp"
-        android:textColor="#000000"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        android:visibility="invisible"
-        tools:layout_editor_absoluteX="205dp"
-        tools:layout_editor_absoluteY="238dp"
-        android:layout_above="@id/buttonReset"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="30dp"
-        />
-
-    <Button
-        android:id="@+id/buttonReset"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@id/buttonMultiply"
-        android:layout_centerHorizontal="true"
-        android:text="@string/reset"
-        android:visibility="invisible"
-        tools:layout_editor_absoluteX="162dp"
-        tools:layout_editor_absoluteY="357dp" />
 
     <Button
         android:id="@+id/buttonAdd"
@@ -47,8 +20,7 @@
         android:text="@string/add"
         android:textSize="16sp"
         tools:layout_editor_absoluteX="146dp"
-        tools:layout_editor_absoluteY="88dp"
-        android:layout_centerHorizontal="true"/>
+        tools:layout_editor_absoluteY="88dp"/>
 
     <Button
         android:id="@+id/buttonSub"
@@ -59,10 +31,31 @@
         android:textSize="16sp"
         tools:layout_editor_absoluteX="146dp"
         tools:layout_editor_absoluteY="237dp"
-        android:layout_below="@id/buttonAdd"
-        android:layout_centerHorizontal="true"
         android:layout_marginTop="30dp"
         />
+
+    <TextView
+        android:id="@+id/textViewresult"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="30dp"
+        android:lineSpacingExtra="8sp"
+        android:textColor="#000000"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:visibility="gone"
+        tools:layout_editor_absoluteX="205dp"
+        tools:layout_editor_absoluteY="238dp" />
+
+    <Button
+        android:id="@+id/buttonReset"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="35dp"
+        android:text="@string/reset"
+        android:visibility="gone"
+        tools:layout_editor_absoluteX="162dp"
+        tools:layout_editor_absoluteY="357dp" />
 
     <Button
         android:id="@+id/buttonMultiply"
@@ -73,8 +66,6 @@
         android:textSize="16sp"
         tools:layout_editor_absoluteX="146dp"
         tools:layout_editor_absoluteY="390dp"
-        android:layout_below="@id/buttonSub"
-        android:layout_centerHorizontal="true"
         android:layout_marginTop="30dp"
         />
 
@@ -87,9 +78,7 @@
         android:textSize="16sp"
         tools:layout_editor_absoluteX="146dp"
         tools:layout_editor_absoluteY="533dp"
-        android:layout_below="@id/buttonMultiply"
-        android:layout_centerHorizontal="true"
         android:layout_marginTop="30dp"/>
 
-</RelativeLayout>
+</LinearLayout>
 </FrameLayout>

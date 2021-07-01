@@ -17,7 +17,6 @@ class MainActivity : AppCompatActivity() {
     private lateinit var buttonDivide: Button
     private lateinit var textView: TextView
     private lateinit var buttonReset: Button
-    private lateinit var action: String
     private lateinit var num1:String
     private lateinit var num2:String
     private var state = 0
@@ -41,21 +40,19 @@ class MainActivity : AppCompatActivity() {
         super.onSaveInstanceState(savedInstanceState)
         savedInstanceState.putInt("state",state)
         savedInstanceState.putString("result", textView.text.toString())
-        savedInstanceState.putString("action",action)
     }
 
     override fun onRestoreInstanceState(savedInstanceState: Bundle) {
         super.onRestoreInstanceState(savedInstanceState)
         Log.i("MainActivity","onRestoreInstanceState called")
         textView.text = savedInstanceState.getString("result")
-        action = savedInstanceState.getString("action").toString()
         state = savedInstanceState.getInt("state")
         if ( state == 1)
             onResult()
     }
 
     fun onButtonClick(view: View){
-        action = getButtonText(view)
+        val action = getButtonText(view)
         val intent = Intent(this,MainActivity2::class.java)
         intent.putExtra("Action",action)
         //startActivity(intent)
@@ -82,6 +79,7 @@ class MainActivity : AppCompatActivity() {
                     onResult()
                     num1 = data.getStringExtra("num1").toString()
                     num2 = data.getStringExtra("num2").toString()
+                    val action = data.getStringExtra("action").toString()
                     val actionResult = data.getStringExtra("result").toString()
                     textView.text ="Action :  $action\nInput1 :  $num1\nInput2 :  $num2\nResult :  $actionResult"
                 }
@@ -92,15 +90,15 @@ class MainActivity : AppCompatActivity() {
     private fun onResult(){
         textView.visibility = View.VISIBLE
         buttonReset.visibility = View.VISIBLE
-        buttonAdd.visibility = View.INVISIBLE
-        buttonSub.visibility = View.INVISIBLE
-        buttonMultiply.visibility = View.INVISIBLE
-        buttonDivide.visibility = View.INVISIBLE
+        buttonAdd.visibility = View.GONE
+        buttonSub.visibility = View.GONE
+        buttonMultiply.visibility = View.GONE
+        buttonDivide.visibility = View.GONE
     }
 
     private fun onReset(){
-        textView.visibility = View.INVISIBLE
-        buttonReset.visibility = View.INVISIBLE
+        textView.visibility = View.GONE
+        buttonReset.visibility = View.GONE
         buttonAdd.visibility = View.VISIBLE
         buttonSub.visibility = View.VISIBLE
         buttonMultiply.visibility = View.VISIBLE
