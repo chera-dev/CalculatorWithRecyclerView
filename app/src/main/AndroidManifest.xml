@@ -11,7 +11,7 @@
         android:theme="@style/Theme.Calculator">
         <activity
             android:name=".MainActivity2"
-            android:windowSoftInputMode="adjustResize" />
+             />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
