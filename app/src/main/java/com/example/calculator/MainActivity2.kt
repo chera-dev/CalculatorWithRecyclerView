@@ -3,6 +3,7 @@ package com.example.calculator
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
@@ -27,6 +28,29 @@ class MainActivity2 : AppCompatActivity() {
                 toMainActivity(actionResult)
         }
     }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putString("chera","chera")
+        Log.i("MainActivity","onSaveInstanceState called in 2")
+    }
+
+
+    override fun onPause() {
+        super.onPause()
+        Log.i("MainActivity","onPause called in 2")
+    }
+
+    override fun onStop() {
+        super.onStop()
+        Log.i("MainActivity","onStop called in 2")
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        Log.i("MainActivity","onDestroy called in 2")
+    }
+
     private fun toMainActivity(actionResult: Double?) {
         val intent = Intent(this,MainActivity::class.java)
         intent.putExtra("num1",num1.text.toString())

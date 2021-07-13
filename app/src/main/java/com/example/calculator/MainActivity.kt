@@ -42,6 +42,21 @@ class MainActivity : AppCompatActivity() {
         savedInstanceState.putString("result", textView.text.toString())
     }
 
+    override fun onPause() {
+        super.onPause()
+        Log.i("MainActivity","onPause called")
+    }
+
+    override fun onStop() {
+        super.onStop()
+        Log.i("MainActivity","onStop called")
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        Log.i("MainActivity","onDestroy called")
+    }
+
     override fun onRestoreInstanceState(savedInstanceState: Bundle) {
         super.onRestoreInstanceState(savedInstanceState)
         Log.i("MainActivity","onRestoreInstanceState called")
