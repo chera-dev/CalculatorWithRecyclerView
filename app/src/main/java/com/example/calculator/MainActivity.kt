@@ -8,53 +8,38 @@ import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.TextView
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 
 
-class MainActivity : AppCompatActivity() {
-    private lateinit var buttonAdd: Button
-    private lateinit var buttonSub: Button
-    private lateinit var buttonMultiply: Button
-    private lateinit var buttonDivide: Button
+class MainActivity : AppCompatActivity(),ItemActionListener {
+
     private lateinit var textView: TextView
-    private lateinit var buttonReset: Button
-    private lateinit var num1:String
-    private lateinit var num2:String
+    private lateinit var resetButton: Button
     private var state = 0
+
+    private lateinit var recyclerView: RecyclerView
+    private lateinit var adapter: ButtonAdapter
     override fun onCreate(savedInstanceState: Bundle?) {
         Log.i("MainActivity","oncreate called")
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        buttonAdd = findViewById(R.id.buttonAdd)
-        buttonSub = findViewById(R.id.buttonSub)
-        buttonMultiply = findViewById(R.id.buttonMultiply)
-        buttonDivide = findViewById(R.id.buttonDivide)
-        textView = findViewById(R.id.textViewresult)
-        buttonReset = findViewById(R.id.buttonReset)
-        buttonReset.setOnClickListener {
+
+        textView = findViewById(R.id.textView2)
+        resetButton = findViewById(R.id.resetButton)
+        recyclerView = findViewById(R.id.recycler_view)
+        recyclerView.layoutManager = LinearLayoutManager(this,RecyclerView.VERTICAL,false)
+        adapter = ButtonAdapter(this,this)
+        recyclerView.adapter = adapter
+
+        if (state == 0)
+            onReset()
+        else
+            onResult()
+
+        resetButton.setOnClickListener {
             state = 0
             onReset() }
-    }
-
-    public override fun onSaveInstanceState(savedInstanceState: Bundle) {
-        Log.i("MainActivity","onSaveInstanceState called")
-        super.onSaveInstanceState(savedInstanceState)
-        savedInstanceState.putInt("state",state)
-        savedInstanceState.putString("result", textView.text.toString())
-    }
-
-    override fun onPause() {
-        super.onPause()
-        Log.i("MainActivity","onPause called")
-    }
-
-    override fun onStop() {
-        super.onStop()
-        Log.i("MainActivity","onStop called")
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        Log.i("MainActivity","onDestroy called")
     }
 
     override fun onRestoreInstanceState(savedInstanceState: Bundle) {
@@ -66,22 +51,14 @@ class MainActivity : AppCompatActivity() {
             onResult()
     }
 
-    fun onButtonClick(view: View){
-        val action = getButtonText(view)
-        val intent = Intent(this,MainActivity2::class.java)
-        intent.putExtra("Action",action)
-        //startActivity(intent)
-        //get data from second activity
-        startActivityForResult(intent,1)
+    override fun onItemClicked(action: String) {
+        onButtonClick(action)
     }
 
-    private fun getButtonText(view: View): String{
-        return when(view.id){
-            R.id.buttonAdd -> buttonAdd.text.toString()
-            R.id.buttonSub -> buttonSub.text.toString()
-            R.id.buttonMultiply -> buttonMultiply.text.toString()
-            else -> buttonDivide.text.toString()
-        }
+    fun onButtonClick(action: String){
+        val intent = Intent(this,MainActivity2::class.java)
+        intent.putExtra("Action",action)
+        startActivityForResult(intent,1)
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -92,8 +69,8 @@ class MainActivity : AppCompatActivity() {
                 if (data != null) {
                     state = 1
                     onResult()
-                    num1 = data.getStringExtra("num1").toString()
-                    num2 = data.getStringExtra("num2").toString()
+                    val num1 = data.getStringExtra("num1").toString()
+                    val num2 = data.getStringExtra("num2").toString()
                     val action = data.getStringExtra("action").toString()
                     val actionResult = data.getStringExtra("result").toString()
                     textView.text ="Action :  $action\nInput1 :  $num1\nInput2 :  $num2\nResult :  $actionResult"
@@ -102,21 +79,22 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    public override fun onSaveInstanceState(savedInstanceState: Bundle) {
+        Log.i("MainActivity","onSaveInstanceState called")
+        super.onSaveInstanceState(savedInstanceState)
+        savedInstanceState.putInt("state",state)
+        savedInstanceState.putString("result", textView.text.toString())
+    }
+
     private fun onResult(){
         textView.visibility = View.VISIBLE
-        buttonReset.visibility = View.VISIBLE
-        buttonAdd.visibility = View.GONE
-        buttonSub.visibility = View.GONE
-        buttonMultiply.visibility = View.GONE
-        buttonDivide.visibility = View.GONE
+        resetButton.visibility = View.VISIBLE
+        recyclerView.visibility = View.GONE
     }
 
     private fun onReset(){
         textView.visibility = View.GONE
-        buttonReset.visibility = View.GONE
-        buttonAdd.visibility = View.VISIBLE
-        buttonSub.visibility = View.VISIBLE
-        buttonMultiply.visibility = View.VISIBLE
-        buttonDivide.visibility = View.VISIBLE
+        resetButton.visibility = View.GONE
+        recyclerView.visibility = View.VISIBLE
     }
 }
